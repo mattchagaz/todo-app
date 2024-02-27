@@ -45,6 +45,11 @@
   gap: 0.375rem;
   font-weight: 700;
   font-size: 0.875rem;
+  transition: 0.2s ease-in-out;
+}
+
+.newTaskForm button:hover {
+  background: #2487c0;
 }
 
 .errorPopup {
