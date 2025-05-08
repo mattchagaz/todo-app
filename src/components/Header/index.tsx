@@ -1,6 +1,7 @@
 import todoLogo from "../../assets/todoLogo.svg";
 import { AiOutlinePlusCircle, AiOutlineInsertRowRight } from "react-icons/ai";
 import styles from "./header.module.css";
+import { Toaster, toast } from 'sonner'
 import { ChangeEvent, FormEvent, useState } from "react";
 
 interface Props {
@@ -15,13 +16,13 @@ export function Header({ onAddTask }: Props) {
     event.preventDefault();
 
     if (title.trim() === "") {
-      setError("Por favor, adicione uma tarefa");
+      toast.error("Por favor, adicione uma tarefa");
       return;
     }
 
     onAddTask(title);
     setTitle("");
-    setError("");
+    toast.error("");
   }
 
   function onChangeTitle(event: ChangeEvent<HTMLInputElement>) {
@@ -49,6 +50,7 @@ export function Header({ onAddTask }: Props) {
           <p>{error}</p>
         </div>
       )}
+      <Toaster richColors position="top-center"  />
     </header>
   );
 }
