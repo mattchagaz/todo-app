@@ -22,7 +22,6 @@ export function Header({ onAddTask }: Props) {
 
     onAddTask(title);
     setTitle("");
-    toast.error("");
   }
 
   function onChangeTitle(event: ChangeEvent<HTMLInputElement>) {
