@@ -1,16 +1,48 @@
 .tasks {
   width: 100%;
-  max-width: 46rem;
+  max-width: 62rem;
   margin: 0 auto;
-  margin-top: 5.625rem;
-  padding: 0 1rem;
+  margin-top: 2rem;
+  padding: 0 1rem 4rem;
+}
+
+.summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.summary > div {
+  min-height: 5rem;
+  background: var(--gray-500);
+  border: 1px solid var(--gray-400);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.2rem;
+}
+
+.summary strong {
+  color: var(--gray-100);
+  font-size: 1.7rem;
+  line-height: 1;
+}
+
+.summary span {
+  color: var(--gray-300);
+  font-size: 0.82rem;
+  font-weight: 700;
 }
 
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1.5rem;
+  gap: 1rem;
+  margin-bottom: 0.85rem;
 }
 
 .header > div {
@@ -38,6 +70,166 @@
   font-weight: 700;
 }
 
+.progress {
+  background: var(--gray-500);
+  border: 1px solid var(--gray-400);
+  border-radius: 0.5rem;
+  padding: 0.85rem;
+  margin-bottom: 1rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.progress > div:first-child {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.progress strong {
+  color: var(--gray-100);
+  font-size: 1rem;
+}
+
+.progress span {
+  color: var(--gray-300);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.progressTrack {
+  height: 0.55rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--gray-400);
+}
+
+.progressTrack span {
+  display: block;
+  height: 100%;
+  min-width: 0;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--blue), var(--purple));
+  transition: width 0.25s ease;
+}
+
+.toolbar {
+  display: grid;
+  grid-template-columns: minmax(14rem, 1fr) minmax(9rem, 0.6fr) minmax(10rem, 0.7fr) minmax(10rem, 0.7fr) auto;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.searchBox,
+.selectBox {
+  min-height: 3rem;
+  border: 1px solid var(--gray-400);
+  border-radius: 0.5rem;
+  background: var(--gray-500);
+  color: var(--gray-300);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 0.75rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.searchBox:focus-within,
+.selectBox:focus-within {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(78, 168, 222, 0.14);
+}
+
+.searchBox input,
+.selectBox select {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--gray-100);
+  font-size: 0.9rem;
+}
+
+.searchBox input::placeholder {
+  color: var(--gray-300);
+}
+
+.selectBox select {
+  color-scheme: dark;
+  cursor: pointer;
+}
+
+.clearCompletedButton {
+  min-height: 3rem;
+  border: 1px solid rgba(226, 88, 88, 0.26);
+  border-radius: 0.5rem;
+  background: rgba(226, 88, 88, 0.08);
+  color: #ffb4a8;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0 0.85rem;
+  font-size: 0.86rem;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.clearCompletedButton:hover:not(:disabled) {
+  background: rgba(226, 88, 88, 0.14);
+  border-color: rgba(226, 88, 88, 0.45);
+}
+
+.clearCompletedButton:disabled {
+  cursor: not-allowed;
+  color: var(--gray-300);
+  border-color: var(--gray-400);
+  background: rgba(128, 128, 128, 0.08);
+}
+
+.listHeader {
+  min-height: 2.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.listHeader span {
+  color: var(--gray-300);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.listHeader button,
+.empty button {
+  border: 0;
+  border-radius: 0.5rem;
+  background: rgba(78, 168, 222, 0.12);
+  color: var(--blue);
+  min-height: 2.25rem;
+  padding: 0 0.75rem;
+  font-weight: 700;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.listHeader button:hover,
+.empty button:hover {
+  background: rgba(78, 168, 222, 0.2);
+  color: var(--gray-100);
+}
+
+.clearCompletedButton:focus-visible,
+.listHeader button:focus-visible,
+.empty button:focus-visible {
+  outline: 3px solid rgba(78, 168, 222, 0.35);
+  outline-offset: 2px;
+}
+
 .list {
   display: flex;
   flex-direction: column;
@@ -53,6 +245,9 @@
   gap: 1rem;
   color: var(--gray-300);
   text-align: center;
+  border: 1px dashed var(--gray-400);
+  border-radius: 0.5rem;
+  padding: 3rem 1rem;
 }
 
 .empty svg {
@@ -61,4 +256,37 @@
 
 .empty p {
   font-weight: 700;
+}
+
+@media (max-width: 980px) {
+  .toolbar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .searchBox,
+  .clearCompletedButton {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .summary {
+    grid-template-columns: 1fr;
+  }
+
+  .header,
+  .progress > div:first-child,
+  .listHeader {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .toolbar {
+    grid-template-columns: 1fr;
+  }
+
+  .searchBox,
+  .clearCompletedButton {
+    grid-column: auto;
+  }
 }
